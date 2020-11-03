@@ -6,7 +6,7 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-query = "select * from bigquery-public-data.stackoverflow.users LIMIT 3"
+query = "select * from bigquery-public-data.stackoverflow.tags LIMIT 3"
 
 query_job = client.query(query)
 

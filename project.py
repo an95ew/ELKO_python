@@ -8,7 +8,7 @@ from plotly.offline import plot
 
 client = bigquery.Client()
 
-query = "select * from bigquery-public-data.stackoverflow.tags LIMIT 5"
+query = "select * from bigquery-public-data.stackoverflow.tags LIMIT 6"
 
 query_job = client.query(query)
 
@@ -16,9 +16,4 @@ dataset = dict()
 for row in query_job:
     dataset[row[0]] = row[1]
 
-plot(go.Figure(
-    data=[
-        go.Pie(labels=list(dataset.keys()),
-               values=list(dataset.values()))
-    ]
-))
+plot(go.Figure(data=[go.Pie(labels=list(dataset.keys()), values=list(dataset.values()))]))
