@@ -21,20 +21,20 @@ products = Table(
 )
 
 # METHOD #1: how to execute pure SQL raw string (with binding parameters or w\o)
-# with engine.connect() as connection:
-#     prepared_query = text(query)
-#     prepared_query = prepared_query.bindparams(
-#         bindparam('vendor_id', type_=String),
-#         bindparam('product_price', type_=Float)
-#     )
-#
-#     cursor = connection.execute(prepared_query, {
-#         'vendor_id': 'BRS01',
-#         'product_price': 8
-#     })
-#
-#     for row in cursor.fetchall():
-#         print(row)
+with engine.connect() as connection:
+    prepared_query = text(query)
+    prepared_query = prepared_query.bindparams(
+        bindparam('vendor_id', type_=String),
+        bindparam('product_price', type_=Float)
+    )
+
+    cursor = connection.execute(prepared_query, {
+        'vendor_id': 'BRS01',
+        'product_price': 8
+    })
+    #
+    # for row in cursor.fetchall():
+    #     print(row)
 
 # VS
 
@@ -46,4 +46,5 @@ with engine.connect() as connection:
     )
 
     cursor = connection.execute(prepared_query)
-    print(cursor.fetchall())
+    # print(cursor.fetchall())
+
